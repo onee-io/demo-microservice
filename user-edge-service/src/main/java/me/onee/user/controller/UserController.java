@@ -5,24 +5,24 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.crypto.digest.Digester;
 import me.onee.thrift.user.UserInfo;
+import me.onee.thrift.user.dto.UserDTO;
 import me.onee.user.common.RedisClient;
 import me.onee.user.common.Result;
 import me.onee.user.common.ResultCode;
-import me.onee.user.dto.UserDTO;
 import me.onee.user.response.LoginRes;
 import me.onee.user.thrift.ServiceProvider;
 import org.apache.thrift.TException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by VOREVER
  * Date: 2018/12/29 16:37
  */
-@RestController
+@Controller
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -31,7 +31,13 @@ public class UserController {
     @Autowired
     private RedisClient redisClient;
 
-    @PostMapping("/login")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "/login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
     public Result<LoginRes> login(@RequestParam String username,
                                   @RequestParam String password) {
         // 1、验证用户名和密码
@@ -61,7 +67,8 @@ public class UserController {
         return new Result<>(ResultCode.R200, res);
     }
 
-    @PostMapping("/register")
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @ResponseBody
     public Result register(@RequestParam String username,
                            @RequestParam String password,
                            @RequestParam(required = false) String mobile,
@@ -97,7 +104,8 @@ public class UserController {
         }
     }
 
-    @PostMapping("/sendVerifyCode")
+    @RequestMapping(value = "/sendVerifyCode", method = RequestMethod.POST)
+    @ResponseBody
     public Result sendVerifyCode(@RequestParam(required = false) String mobile,
                                  @RequestParam(required = false) String email) {
         if (StrUtil.isEmpty(mobile) && StrUtil.isEmpty(email)) {
@@ -126,6 +134,12 @@ public class UserController {
             e.printStackTrace();
             return new Result(ResultCode.R500);
         }
+    }
+
+    @RequestMapping(value = "/auth", method = RequestMethod.POST)
+    @ResponseBody
+    public UserInfo auth(@RequestHeader String token) {
+        return (UserInfo) redisClient.get(token);
     }
 
     private UserDTO toDTO(UserInfo userInfo) {

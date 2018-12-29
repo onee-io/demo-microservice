@@ -1,4 +1,4 @@
-package me.onee.user.dto;
+package me.onee.thrift.user.dto;
 
 import lombok.Data;
 
