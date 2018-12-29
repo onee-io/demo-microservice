@@ -1,7 +1,8 @@
 package me.onee.user;
 
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
  * Created by VOREVER
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class UserServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
+        // 非 web 应用
+        new SpringApplicationBuilder(UserServiceApplication.class).web(WebApplicationType.NONE).run(args);
     }
 }
