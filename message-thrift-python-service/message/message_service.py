@@ -1,4 +1,4 @@
-from message.api import MessageService
+from api import MessageService
 from thrift.transport import TSocket
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
@@ -10,12 +10,12 @@ class MessageServiceHandler:
     def sendMobileMessage(self, mobile, message):
         # 只做服务调用演示 不实现具体功能
         print("Send mobile message -> mobile:" + mobile + " message:" + message)
-        pass
+        return True
 
     def sendEmailMessage(self, email, message):
         # 只做服务调用演示 不实现具体功能
         print("Send mobile message -> email:" + email + " message:" + message)
-        pass
+        return True
 
 
 if __name__ == '__main__':
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     # 初始化消息处理器
     processor = MessageService.Processor(handler)
     # 指定服务端口
-    transport = TSocket.TServerSocket("localhost", "9090")
+    transport = TSocket.TServerSocket("127.0.0.1", "9090")
     # 指定传输方式为帧传输
     tfactory = TTransport.TFramedTransportFactory()
     # 指定传输协议为二进制协议

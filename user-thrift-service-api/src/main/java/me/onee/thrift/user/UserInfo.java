@@ -15,7 +15,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
   private static final org.apache.thrift.protocol.TField USERNAME_FIELD_DESC = new org.apache.thrift.protocol.TField("username", org.apache.thrift.protocol.TType.STRING, (short)2);
   private static final org.apache.thrift.protocol.TField PASSWORD_FIELD_DESC = new org.apache.thrift.protocol.TField("password", org.apache.thrift.protocol.TType.STRING, (short)3);
   private static final org.apache.thrift.protocol.TField REAL_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("realName", org.apache.thrift.protocol.TType.STRING, (short)4);
-  private static final org.apache.thrift.protocol.TField MODILE_FIELD_DESC = new org.apache.thrift.protocol.TField("modile", org.apache.thrift.protocol.TType.STRING, (short)5);
+  private static final org.apache.thrift.protocol.TField MOBILE_FIELD_DESC = new org.apache.thrift.protocol.TField("mobile", org.apache.thrift.protocol.TType.STRING, (short)5);
   private static final org.apache.thrift.protocol.TField EMAIL_FIELD_DESC = new org.apache.thrift.protocol.TField("email", org.apache.thrift.protocol.TType.STRING, (short)6);
 
   private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new UserInfoStandardSchemeFactory();
@@ -25,7 +25,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
   public java.lang.String username; // required
   public java.lang.String password; // required
   public java.lang.String realName; // required
-  public java.lang.String modile; // required
+  public java.lang.String mobile; // required
   public java.lang.String email; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
@@ -34,7 +34,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     USERNAME((short)2, "username"),
     PASSWORD((short)3, "password"),
     REAL_NAME((short)4, "realName"),
-    MODILE((short)5, "modile"),
+    MOBILE((short)5, "mobile"),
     EMAIL((short)6, "email");
 
     private static final java.util.Map<java.lang.String, _Fields> byName = new java.util.HashMap<java.lang.String, _Fields>();
@@ -58,8 +58,8 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
           return PASSWORD;
         case 4: // REAL_NAME
           return REAL_NAME;
-        case 5: // MODILE
-          return MODILE;
+        case 5: // MOBILE
+          return MOBILE;
         case 6: // EMAIL
           return EMAIL;
         default:
@@ -115,7 +115,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.REAL_NAME, new org.apache.thrift.meta_data.FieldMetaData("realName", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.MODILE, new org.apache.thrift.meta_data.FieldMetaData("modile", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.MOBILE, new org.apache.thrift.meta_data.FieldMetaData("mobile", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.EMAIL, new org.apache.thrift.meta_data.FieldMetaData("email", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
@@ -131,7 +131,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     java.lang.String username,
     java.lang.String password,
     java.lang.String realName,
-    java.lang.String modile,
+    java.lang.String mobile,
     java.lang.String email)
   {
     this();
@@ -140,7 +140,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     this.username = username;
     this.password = password;
     this.realName = realName;
-    this.modile = modile;
+    this.mobile = mobile;
     this.email = email;
   }
 
@@ -159,8 +159,8 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     if (other.isSetRealName()) {
       this.realName = other.realName;
     }
-    if (other.isSetModile()) {
-      this.modile = other.modile;
+    if (other.isSetMobile()) {
+      this.mobile = other.mobile;
     }
     if (other.isSetEmail()) {
       this.email = other.email;
@@ -178,7 +178,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     this.username = null;
     this.password = null;
     this.realName = null;
-    this.modile = null;
+    this.mobile = null;
     this.email = null;
   }
 
@@ -277,27 +277,27 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     }
   }
 
-  public java.lang.String getModile() {
-    return this.modile;
+  public java.lang.String getMobile() {
+    return this.mobile;
   }
 
-  public UserInfo setModile(java.lang.String modile) {
-    this.modile = modile;
+  public UserInfo setMobile(java.lang.String mobile) {
+    this.mobile = mobile;
     return this;
   }
 
-  public void unsetModile() {
-    this.modile = null;
+  public void unsetMobile() {
+    this.mobile = null;
   }
 
-  /** Returns true if field modile is set (has been assigned a value) and false otherwise */
-  public boolean isSetModile() {
-    return this.modile != null;
+  /** Returns true if field mobile is set (has been assigned a value) and false otherwise */
+  public boolean isSetMobile() {
+    return this.mobile != null;
   }
 
-  public void setModileIsSet(boolean value) {
+  public void setMobileIsSet(boolean value) {
     if (!value) {
-      this.modile = null;
+      this.mobile = null;
     }
   }
 
@@ -359,11 +359,11 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       }
       break;
 
-    case MODILE:
+    case MOBILE:
       if (value == null) {
-        unsetModile();
+        unsetMobile();
       } else {
-        setModile((java.lang.String)value);
+        setMobile((java.lang.String)value);
       }
       break;
 
@@ -392,8 +392,8 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     case REAL_NAME:
       return getRealName();
 
-    case MODILE:
-      return getModile();
+    case MOBILE:
+      return getMobile();
 
     case EMAIL:
       return getEmail();
@@ -417,8 +417,8 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       return isSetPassword();
     case REAL_NAME:
       return isSetRealName();
-    case MODILE:
-      return isSetModile();
+    case MOBILE:
+      return isSetMobile();
     case EMAIL:
       return isSetEmail();
     }
@@ -476,12 +476,12 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
         return false;
     }
 
-    boolean this_present_modile = true && this.isSetModile();
-    boolean that_present_modile = true && that.isSetModile();
-    if (this_present_modile || that_present_modile) {
-      if (!(this_present_modile && that_present_modile))
+    boolean this_present_mobile = true && this.isSetMobile();
+    boolean that_present_mobile = true && that.isSetMobile();
+    if (this_present_mobile || that_present_mobile) {
+      if (!(this_present_mobile && that_present_mobile))
         return false;
-      if (!this.modile.equals(that.modile))
+      if (!this.mobile.equals(that.mobile))
         return false;
     }
 
@@ -515,9 +515,9 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     if (isSetRealName())
       hashCode = hashCode * 8191 + realName.hashCode();
 
-    hashCode = hashCode * 8191 + ((isSetModile()) ? 131071 : 524287);
-    if (isSetModile())
-      hashCode = hashCode * 8191 + modile.hashCode();
+    hashCode = hashCode * 8191 + ((isSetMobile()) ? 131071 : 524287);
+    if (isSetMobile())
+      hashCode = hashCode * 8191 + mobile.hashCode();
 
     hashCode = hashCode * 8191 + ((isSetEmail()) ? 131071 : 524287);
     if (isSetEmail())
@@ -574,12 +574,12 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
         return lastComparison;
       }
     }
-    lastComparison = java.lang.Boolean.valueOf(isSetModile()).compareTo(other.isSetModile());
+    lastComparison = java.lang.Boolean.valueOf(isSetMobile()).compareTo(other.isSetMobile());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetModile()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.modile, other.modile);
+    if (isSetMobile()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.mobile, other.mobile);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -642,11 +642,11 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("modile:");
-    if (this.modile == null) {
+    sb.append("mobile:");
+    if (this.mobile == null) {
       sb.append("null");
     } else {
-      sb.append(this.modile);
+      sb.append(this.mobile);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -734,10 +734,10 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // MODILE
+          case 5: // MOBILE
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.modile = iprot.readString();
-              struct.setModileIsSet(true);
+              struct.mobile = iprot.readString();
+              struct.setMobileIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -783,9 +783,9 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
         oprot.writeString(struct.realName);
         oprot.writeFieldEnd();
       }
-      if (struct.modile != null) {
-        oprot.writeFieldBegin(MODILE_FIELD_DESC);
-        oprot.writeString(struct.modile);
+      if (struct.mobile != null) {
+        oprot.writeFieldBegin(MOBILE_FIELD_DESC);
+        oprot.writeString(struct.mobile);
         oprot.writeFieldEnd();
       }
       if (struct.email != null) {
@@ -823,7 +823,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       if (struct.isSetRealName()) {
         optionals.set(3);
       }
-      if (struct.isSetModile()) {
+      if (struct.isSetMobile()) {
         optionals.set(4);
       }
       if (struct.isSetEmail()) {
@@ -842,8 +842,8 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       if (struct.isSetRealName()) {
         oprot.writeString(struct.realName);
       }
-      if (struct.isSetModile()) {
-        oprot.writeString(struct.modile);
+      if (struct.isSetMobile()) {
+        oprot.writeString(struct.mobile);
       }
       if (struct.isSetEmail()) {
         oprot.writeString(struct.email);
@@ -871,8 +871,8 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
         struct.setRealNameIsSet(true);
       }
       if (incoming.get(4)) {
-        struct.modile = iprot.readString();
-        struct.setModileIsSet(true);
+        struct.mobile = iprot.readString();
+        struct.setMobileIsSet(true);
       }
       if (incoming.get(5)) {
         struct.email = iprot.readString();
