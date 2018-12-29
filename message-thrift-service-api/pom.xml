@@ -11,5 +11,11 @@
 
     <artifactId>message-thrift-service-api</artifactId>
 
-    
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

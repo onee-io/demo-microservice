@@ -1,4 +1,4 @@
-package me.onee.user.servic;
+package me.onee.user.service;
 
 import me.onee.thrift.user.UserInfo;
 import me.onee.thrift.user.UserService;
