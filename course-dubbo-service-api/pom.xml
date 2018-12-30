@@ -9,21 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>user-thrift-service</artifactId>
+    <artifactId>course-dubbo-service-api</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>me.onee</groupId>
             <artifactId>user-thrift-service-api</artifactId>
-            <version>${procject.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 

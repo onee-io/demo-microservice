@@ -31,7 +31,7 @@ public abstract class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String token = request.getParameter("token");
         if (StrUtil.isEmpty(token)) {
@@ -51,18 +51,19 @@ public abstract class LoginFilter implements Filter {
             dto = timedCache.get(token); // 读缓存
             if (dto == null) {
                 dto = requestUserInfo(token);
+                if (dto != null) {
+                    timedCache.put(token, dto); // 写缓存
+                }
             }
         }
         // 用户未登录 跳转至登录页面
         if (dto == null) {
             response.sendRedirect("http://127.0.0.1:8082/user/login");
+            return;
         }
-
-        timedCache.put(token, dto); // 写缓存
 
         // 用户已登录 各服务可自己实现此方法
         login(request, response, dto);
-
         filterChain.doFilter(request, response);
     }
 
@@ -77,6 +78,7 @@ public abstract class LoginFilter implements Filter {
         String url = "http://127.0.0.1:8082/user/auth";
         String result = HttpUtil.createPost(url).header("token", token).execute().body();
         if (result != null) {
+            System.out.println(result);
             return JSON.parseObject(result, UserDTO.class);
         }
         return null;

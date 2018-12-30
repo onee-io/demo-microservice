@@ -138,8 +138,8 @@ public class UserController {
 
     @RequestMapping(value = "/auth", method = RequestMethod.POST)
     @ResponseBody
-    public UserInfo auth(@RequestHeader String token) {
-        return (UserInfo) redisClient.get(token);
+    public UserDTO auth(@RequestHeader String token) {
+        return (UserDTO) redisClient.get(token);
     }
 
     private UserDTO toDTO(UserInfo userInfo) {
