@@ -58,7 +58,7 @@ public abstract class LoginFilter implements Filter {
         }
         // 用户未登录 跳转至登录页面
         if (dto == null) {
-            response.sendRedirect("http://127.0.0.1:8082/user/login");
+            response.sendRedirect("http://127.0.0.1:8080/user/login");
             return;
         }
 
@@ -75,7 +75,7 @@ public abstract class LoginFilter implements Filter {
     }
 
     private UserDTO requestUserInfo(String token) {
-        String url = "http://127.0.0.1:8082/user/auth";
+        String url = "http://127.0.0.1:8080/user/auth";
         String result = HttpUtil.createPost(url).header("token", token).execute().body();
         if (result != null) {
             System.out.println(result);
