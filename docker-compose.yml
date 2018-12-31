@@ -2,15 +2,15 @@ version: '3'
 
 services:
   message-service:
-    image: message-service:lastest
+    image: registry.cn-beijing.aliyuncs.com/kuone/message-service:lastest
 
   user-service:
-    image: user-service:lastest
+    image: registry.cn-beijing.aliyuncs.com/kuone/user-service:lastest
     command:
     - "--mysql.address=192.168.0.13"
 
   user-edge-service:
-    image: user-edge-service:lastest
+    image: registry.cn-beijing.aliyuncs.com/kuone/user-edge-service:lastest
     links:
     - user-service
     - message-service
@@ -18,7 +18,7 @@ services:
     - "--redis.address=192.168.0.13"
 
   course-service:
-    image: course-service:lastest
+    image: registry.cn-beijing.aliyuncs.com/kuone/course-service:lastest
     links:
     - user-service
     - message-service
@@ -27,14 +27,14 @@ services:
     - "--zk.address=192.168.0.13"
 
   course-edge-service:
-    image: course-edge-service:lastest
+    image: registry.cn-beijing.aliyuncs.com/kuone/course-edge-service:lastest
     links:
     - user-edge-service
     command:
     - "--zk.address=192.168.0.13"
 
   api-gateway-zuul:
-    image: api-gateway-zuul:lastest
+    image: registry.cn-beijing.aliyuncs.com/kuone/api-gateway-zuul:lastest
     links:
     - user-edge-service
     - course-edge-service

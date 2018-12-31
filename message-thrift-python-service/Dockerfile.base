@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM registry.cn-beijing.aliyuncs.com/kuone/python:3.6
 MAINTAINER onee 774247851@qq.com
 
 RUN pip install -i https://pypi.douban.com/simple thrift

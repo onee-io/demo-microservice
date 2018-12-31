@@ -2,4 +2,5 @@
 
 mvn clean package
 
-docker build -t api-gateway-zuul:lastest .
+docker build -t registry.cn-beijing.aliyuncs.com/kuone/api-gateway-zuul:lastest .
+docker push registry.cn-beijing.aliyuncs.com/kuone/api-gateway-zuul:lastest
