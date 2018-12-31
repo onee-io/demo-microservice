@@ -75,7 +75,7 @@ public abstract class LoginFilter implements Filter {
     }
 
     private UserDTO requestUserInfo(String token) {
-        String url = "http://127.0.0.1:8080/user/auth";
+        String url = "http://user-edge-service:8082/user/auth";
         String result = HttpUtil.createPost(url).header("token", token).execute().body();
         if (result != null) {
             return JSON.parseObject(result, UserDTO.class);

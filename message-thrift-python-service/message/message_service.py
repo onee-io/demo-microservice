@@ -22,8 +22,8 @@ if __name__ == '__main__':
     handler = MessageServiceHandler()
     # 初始化消息处理器
     processor = MessageService.Processor(handler)
-    # 指定服务端口
-    transport = TSocket.TServerSocket("127.0.0.1", "9090")
+    # 指定服务端口 (此处不写ip默认允许所有ip连接)
+    transport = TSocket.TServerSocket(None, "9090")
     # 指定传输方式为帧传输
     tfactory = TTransport.TFramedTransportFactory()
     # 指定传输协议为二进制协议

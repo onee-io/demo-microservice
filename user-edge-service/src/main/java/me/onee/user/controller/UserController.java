@@ -33,7 +33,7 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        return "/login";
+        return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -49,7 +49,7 @@ public class UserController {
             return new Result<>(ResultCode.R401);
         }
         if (userInfo == null) {
-            return new Result<>(ResultCode.R401);
+            return new Result<>(ResultCode.R400);
         }
         Digester md5 = new Digester(DigestAlgorithm.MD5);
         if (!userInfo.getPassword().equalsIgnoreCase(md5.digestHex(password))) {
