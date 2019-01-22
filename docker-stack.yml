@@ -1,0 +1,77 @@
+version: "3.4"
+
+services:
+  message-service:
+    image: registry.cn-beijing.aliyuncs.com/kuone/message-service:lastest
+    deploy:
+      endpoint_mode: dnsrr
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: "128M"
+
+  user-service:
+    image: registry.cn-beijing.aliyuncs.com/kuone/user-service:lastest
+    deploy:
+      endpoint_mode: dnsrr
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: "256M"
+
+  user-edge-service:
+    image: registry.cn-beijing.aliyuncs.com/kuone/user-edge-service:lastest
+    deploy:
+      endpoint_mode: vip
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: "256M"
+    ports:
+    - "8082:8082"
+    depends_on:
+    - user-service
+    - message-service
+
+  course-service:
+    image: registry.cn-beijing.aliyuncs.com/kuone/course-service:lastest
+    deploy:
+      endpoint_mode: dnsrr
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: "256M"
+    depends_on:
+    - user-service
+
+  course-edge-service:
+    image: registry.cn-beijing.aliyuncs.com/kuone/course-edge-service:lastest
+    deploy:
+      endpoint_mode: vip
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: "256M"
+    ports:
+    - "8081:8081"
+    depends_on:
+    - user-edge-service
+
+  api-gateway:
+    image: registry.cn-beijing.aliyuncs.com/kuone/api-gateway-zuul:lastest
+    deploy:
+      endpoint_mode: vip
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: "256M"
+    ports:
+    - "8080:8080"
+    depends_on:
+    - user-edge-service
+    - course-edge-service
+
+networks:
+  default:
+    external:
+      name: microservice
